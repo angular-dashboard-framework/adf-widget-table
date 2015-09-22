@@ -1,0 +1,14 @@
+<div>
+  <table class="table">
+    <tr>
+      <th ng-repeat="head in vm.data.headers">
+        {{head}}
+      </th>
+    </tr>
+    <tr ng-repeat="row in vm.data.rows">
+      <td ng-repeat="col in row">
+        {{col}}
+      </td>
+    </tr>
+  </table>
+</div>
