@@ -71,17 +71,22 @@ function TableService($q, $http, $parse){
     return model;
   }
 
-  function get(config){
-    var deferred = $q.defer();
-    $http.get(config.url)
-      .success(function(data){
-        deferred.resolve(createDataModel(config, data));
+  function fetch(config){
+    return $http.get(config.url)
+      .then(function(response){
+        return response.data;
       })
-      .error(function(){
-        deferred.reject();
+      .then(function(data){
+        return createDataModel(config, data);
       });
+  }
 
-    return deferred.promise;
+  function get(config){
+    var result = null;
+    if (config.url){
+      result = fetch(config);
+    }
+    return result;
   }
 
   return {

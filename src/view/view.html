@@ -1,5 +1,8 @@
 <div>
-  <table class="table">
+  <div ng-hide="vm.data" class="alert alert-info" role="alert">
+    Please insert a url to the widget configuration
+  </div>
+  <table ng-show="vm.data" class="table">
     <tr>
       <th ng-repeat="head in vm.data.headers">
         {{head}}
